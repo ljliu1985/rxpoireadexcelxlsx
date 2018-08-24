@@ -1,7 +1,7 @@
 Introduction
 ============
-Android Poi ReadExcel Support xlsx
-使用Poi读取高版本Excel xlsx文件，RxJava处理，包含进度信息，基于注解生成对象，数据校验。
+Android Poi Import/Export Excel Support xlsx
+使用Poi读取高版本Excel xlsx文件，RxJava处理，包含进度信息，基于注解生成对象，数据校验。基于注解导入excel文件
 
 
 Screenshots
