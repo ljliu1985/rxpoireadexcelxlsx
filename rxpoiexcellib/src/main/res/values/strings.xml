@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">rxpoiexcellib</string>
+    <string name="msg_save_success">添加成功</string>
+    <string name="msg_data_import_success">数据导入成功</string>
+    <string name="msg_loading_file">正在加载文件:%s</string>
+    <string name="msg_loading">正在加载...</string>
+
+    <string name="msg_parser_data">正在解释数据...</string>
+    <string name="msg_not_match_obj">数据不匹配不能导入...</string>
+    <string name="not_support_file_or_stream">不支持的文件类型或数据流...</string>
+
+
+    <string name="msg_data_lost_import_failed">数据错误或缺失，不能导入！</string>
+    <string name="msg_invalid_value_of_critival">无效临界值：</string>
+    <string name="msg_invalid_value_of_score">无效分数值：</string>
+    <string name="msg_prepare_data">正在准备数据...</string>
+    <string name="msg_inser_data_info">正在插入数据共：%s条</string>
+    <string name="msg_export_excel">正在导出到excel，共：%s条</string>
+    <string name="msg_export_excel_success">已成功导出到excel</string>
+    <string name="check_uncalc_score">当前检测还没有评分</string>
+    <string name="file_is_copy_to_udisk">文件已复制到U盘,%s</string>
+    <string name="msg_parsering_data">正在解释文件，%s条数据</string>
+</resources>
