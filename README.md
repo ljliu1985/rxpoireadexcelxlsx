@@ -2,17 +2,7 @@ Introduction
 ============
 Android Poi ReadExcel Support xlsx
 使用Poi读取高版本Excel xlsx文件，RxJava处理，包含进度信息，基于注解生成对象，数据校验。
-project gradle:
-```java
-maven { url 'https://jitpack.io' }
 
-maven { url 'https://dl.bintray.com/magnusja/maven' }
-```
-
-app gradle:
-```java
- implementation 'com.github.ljliu1985:rxpoiexcellib:1.0'
-```
 
 Screenshots
 ===========
