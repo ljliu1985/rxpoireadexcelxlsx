@@ -89,7 +89,23 @@ public final class ExcelUtils {
                         titleCount++;
                     }
 
-                    //2.excel content to mapping
+                    //2.mapping: name--field
+                    HashMap<Field, String> fieldAndCnNameMap = getFieldAndCnNameMap(cla);
+                    SparseArray<Field> fieldSparseArray = new SparseArray();
+                    for (int i = 0; i < titleMap.size(); i++) {
+                        for (Field field : fieldAndCnNameMap.keySet()) {
+                            if (fieldAndCnNameMap.get(field).equals(titleMap.get(i))) {
+                                fieldSparseArray.put(i, field);
+                            }
+                        }
+                    }
+
+                    if (fieldSparseArray.size() == 0) {
+                        p.onError(new UnknownError(Utils.getApp().getString(R.string.msg_not_match_obj)));
+                        return;
+                    }
+
+                    //3.excel content to mapping
                     ArrayList<SparseArray<String>> mapList = new ArrayList<>();
                     int len = titleMap.size();
                     String msgParsering = Utils.getApp().getString(R.string.msg_parsering_data);
@@ -115,21 +131,6 @@ public final class ExcelUtils {
                         mapList.add(map);
                     }
 
-                    //3.mapping: name--field
-                    HashMap<Field, String> fieldAndCnNameMap = getFieldAndCnNameMap(cla);
-                    SparseArray<Field> fieldSparseArray = new SparseArray();
-                    for (int i = 0; i < titleMap.size(); i++) {
-                        for (Field field : fieldAndCnNameMap.keySet()) {
-                            if (fieldAndCnNameMap.get(field).equals(titleMap.get(i))) {
-                                fieldSparseArray.put(i, field);
-                            }
-                        }
-                    }
-
-                    if (fieldSparseArray.size() == 0) {
-                        p.onError(new UnknownError(Utils.getApp().getString(R.string.msg_not_match_obj)));
-                        return;
-                    }
 
                     //check values method
                     Method dealDataMethod = getDealDataMethod(cla);
