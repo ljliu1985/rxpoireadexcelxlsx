@@ -9,6 +9,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,5 +33,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     implementation  'com.github.ljliu1985:usbdisklib:1.4'
     implementation rootProject.ext.dependencies["utilcode"]
+    implementation 'com.android.support:multidex:1.0.1'
 
 }

@@ -1,12 +1,12 @@
 package com.lj.excel;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.blankj.utilcode.util.Utils;
 import com.udisk.lib.UsbSdk;
 
 
-public class MyApp extends Application {
+public class MyApp extends MultiDexApplication {
 
     @Override
     public void onCreate() {
