@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
+import com.blankj.utilcode.util.Utils;
 import com.github.mjdev.libaums.fs.UsbFile;
 import com.github.mjdev.libaums.fs.UsbFileInputStream;
 import com.lj.excellib.R;
@@ -60,20 +61,20 @@ public final class ExcelUtils {
                     RxExcelMsg rxMsg = null;
                     if (objFile instanceof UsbFile) {
                         fis = new UsbFileInputStream((UsbFile) objFile);
-                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, AppUtils.getApp().getString(R.string.msg_loading_file) + ((UsbFile) objFile).getName());
+                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, String.format(Utils.getApp().getString(R.string.msg_loading_file), ((UsbFile) objFile).getName()));
                     } else if (objFile instanceof File) {
                         fis = new FileInputStream((File) objFile);
-                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, AppUtils.getApp().getString(R.string.msg_loading_file) + ((File) objFile).getName());
+                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, String.format(Utils.getApp().getString(R.string.msg_loading_file), ((File) objFile).getName()));
                     } else if (objFile instanceof InputStream) {
                         fis = (InputStream) objFile;
-                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, AppUtils.getApp().getString(R.string.msg_loading));
+                        rxMsg = new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, Utils.getApp().getString(R.string.msg_loading));
                     } else {
-                        p.onError(new UnknownError(AppUtils.getApp().getString(R.string.not_support_file_or_stream)));
+                        p.onError(new UnknownError(Utils.getApp().getString(R.string.not_support_file_or_stream)));
                         return;
                     }
                     p.onNext(rxMsg);
                     Workbook wb = WorkbookFactory.create(fis);
-                    p.onNext(new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, AppUtils.getApp().getString(R.string.msg_parser_data)));
+                    p.onNext(new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, Utils.getApp().getString(R.string.msg_parser_data)));
                     Sheet sheet = wb.getSheetAt(0);
                     //1.excel title
                     SparseArray<String> titleMap = new SparseArray<>();
@@ -91,7 +92,7 @@ public final class ExcelUtils {
                     //2.excel content to mapping
                     ArrayList<SparseArray<String>> mapList = new ArrayList<>();
                     int len = titleMap.size();
-                    String msgParsering = AppUtils.getApp().getString(R.string.msg_parsering_data);
+                    String msgParsering = Utils.getApp().getString(R.string.msg_parsering_data);
                     p.onNext(new RxExcelMsg(RxExcelMsg.TYPE_SEND_LOADING, String.format(msgParsering, String.valueOf(sheet.getLastRowNum()))));
                     long startTime = SystemClock.elapsedRealtime();
                     for (int i = 1; i < sheet.getLastRowNum(); i++) {
@@ -126,7 +127,7 @@ public final class ExcelUtils {
                     }
 
                     if (fieldSparseArray.size() == 0) {
-                        p.onError(new UnknownError(AppUtils.getApp().getString(R.string.msg_not_match_obj)));
+                        p.onError(new UnknownError(Utils.getApp().getString(R.string.msg_not_match_obj)));
                         return;
                     }
 
