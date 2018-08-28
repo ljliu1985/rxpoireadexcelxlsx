@@ -28,10 +28,11 @@ dependencies {
     implementation rootProject.ext.dependencies["constraintlayout"]
     implementation rootProject.ext.dependencies["appcompatv7"]
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation  project(':rxpoiexcellib')
+    //implementation  project(':rxpoiexcellib')
     implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     implementation  'com.github.ljliu1985:usbdisklib:1.4'
+    implementation  'com.github.ljliu1985:rxpoireadexcelxlsx:1.3'
     implementation rootProject.ext.dependencies["utilcode"]
     implementation 'com.android.support:multidex:1.0.1'
 
